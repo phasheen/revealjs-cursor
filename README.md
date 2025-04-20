@@ -64,7 +64,7 @@ The presentation includes links to important resources:
 
 ## Credits
 
-This presentation was created using the [SNUPHEL Reveal.js Template](https://github.com/phasheen/revealjs-snuphel) by Xianghui Xin.
+This presentation was created using the [SNUPHEL Reveal.js Template](https://github.com/phasheen/revealjs-snuphel).
 
 Built with [Reveal.js](https://revealjs.com) - The HTML Presentation Framework
 
