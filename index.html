@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Cursor: AI-Powered Coding & MCP</title>
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+		<!-- Core Reveal.js styles -->
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="custom/custom-styles.css">
+		
+		<!-- HTTPS redirect and presenter info script -->
+		<script src="custom/custom-scripts.js"></script>
+	</head>
+	<body>
+		<div class="reveal"">
+			<div class="slides">
+				<!-- 1. Title Slide -->
+				<section data-background="resources/images/cursor-website.png" data-background-opacity="1" data-background-size="cover">
+					<div style="background-color: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 10px; max-width: 90%; margin: 0 auto;">
+						<h1><strong>Cursor & Model Context Protocol</strong></h1>
+						<h3>AI-Powered Coding for Enhanced Productivity</h3>
+						<p class="author-info"><span class="presenter-name"></span><br>
+						Team: <span class="presenter-dept"></span><br>
+						<span class="presenter-univ"></span></p>
+						<p class="smalltext">Today: <span class="presentation-date"></span></p>
+						<p class="smalltext">Session: <span class="session-name"></p>
+					</div>
+					<aside class="notes">
+						Welcome to this presentation on Cursor, the AI-powered code editor, and the Model Context Protocol. We'll explore how these technologies are transforming the coding experience.
+					</aside>
+				</section>
+
+				<!-- Table of Contents slide -->
+				<section>
+					<h2 class="bg-header">Presentation Outline</h2>
+					<ol>
+						<li><a href="#/2"><strong>Introduction to Cursor</strong></a> - AI-powered code editor</li>
+						<li><a href="#/3"><strong>Cursor Key Features</strong></a> - Agent, Chat, Tab, and more</li>
+						<li><a href="#/8"><strong>Model Context Protocol</strong></a> - Understanding MCP architecture</li>
+						<li><a href="#/12"><strong>MCP Implementation</strong></a> - Building with MCP</li>
+						<li><a href="#/16"><strong>Practical Applications</strong></a> - Real-world use cases</li>
+						<li><a href="#/17"><strong>Discussion</strong></a> - Q&A and exercises</li>
+					</ol>
+					<aside class="notes">
+						This is our roadmap for today's session. We'll start with an introduction to Cursor, explore its key features, understand the Model Context Protocol, look at implementation details, examine practical applications, and finish with a discussion.
+					</aside>
+					<div class="slide-citation">Click on any section to jump directly to it</div>
+				</section>
+
+				<!-- 2. Introduction to Cursor Section -->
+				<section>
+					<section>
+						<h2 class="bg-header">Introduction to Cursor</h2>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>AI-powered code editor <span class="highlight">built on VSCode</span></li>
+									<li>Helps developers <span class="highlight">build software faster</span></li>
+									<li>Features <span class="fragment highlight-blue" data-fragment-index="1"><strong>intelligent code assistance</strong></span> powered by AI models</li>
+									<li>Provides <span class="highlight">agent capabilities</span> for end-to-end tasks</li>
+									<li>Integrates with <span class="highlight">Model Context Protocol</span> for extended functionality</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="Cursor editor interface">
+								<p class="img-caption">[Placeholder] Cursor editor interface</p>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor is an AI-powered code editor built on VSCode that helps developers build software faster. It features intelligent code assistance powered by AI models and provides agent capabilities for end-to-end tasks.
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Cursor's Core Capabilities</h3>
+						<table class="data-table" style="width: 87%;">
+							<thead>
+								<tr>
+									<th>Capability</th>
+									<th>Description</th>
+									<th>Benefits</th>
+									<th>Activation Method</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Agent</td>
+									<td>Completes tasks end-to-end while keeping programmers in the loop</td>
+									<td>Faster development, reduced manual work</td>
+									<td>Select 'agent' in Composer</td>
+								</tr>
+								<tr>
+									<td>Context Finding</td>
+									<td class="highlight-cell">Understands codebase using custom retrieval models</td>
+									<td>Reduces need for manual context addition</td>
+									<td>Automatic</td>
+								</tr>
+								<tr>
+									<td>Command Running</td>
+									<td>Writes and runs terminal commands automatically</td>
+									<td>Improved workflow efficiency</td>
+									<td>Requires user confirmation by default</td>
+								</tr>
+								<tr>
+									<td>Error Handling</td>
+									<td class="highlight-cell">Detects and applies fixes for lint errors</td>
+									<td>Reduced debugging time</td>
+									<td>Automatic</td>
+								</tr>
+								<tr>
+									<td>Tab Autocomplete</td>
+									<td>Predicts and suggests next edits across multiple lines</td>
+									<td>Increased coding speed</td>
+									<td>Always on once enabled</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="img-caption">Cursor's core capabilities and benefits</p>
+						<div class="slide-citation">
+							Source: https://www.cursor.com/features
+						</div>
+						<aside class="notes">
+							Cursor offers several core capabilities including Agent mode for end-to-end task completion, Context Finding for codebase understanding, Command Running for automatic terminal operations, Error Handling for automatic lint error fixing, and Tab Autocomplete for predictive code editing.
+						</aside>
+					</section>
+				</section>
+
+				<!-- 3. Cursor Key Features Section -->
+				<section>
+					<section>
+						<h2 class="bg-header">Cursor Key Features</h2>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li><span class="highlight">Agent Mode</span> - Completes coding tasks end-to-end</li>
+									<li><span class="highlight">Chat</span> - AI-powered chat that understands your codebase</li>
+									<li><span class="highlight">Tab</span> - Smart code autocomplete with multi-line predictions</li>
+									<li><span class="highlight">Ctrl+K</span> - Edit and generate code with AI assistance</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="Cursor features overview">
+								<p class="img-caption">[Placeholder] Cursor features overview</p>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor's key features include Agent Mode for end-to-end task completion, Chat for AI-powered code assistance, Tab for smart code autocomplete, and Ctrl+K for AI-assisted code editing and generation.
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Agent Mode</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Completes tasks <span class="highlight">end-to-end</span></li>
+									<li>Works <span class="highlight">quickly</span> while keeping programmers in the loop</li>
+									<li>Activated by selecting <span class="highlight">'agent'</span> in Composer</li>
+									<li>Can understand complex requirements</li>
+									<li>Executes multi-step coding tasks</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="javascript">
+// Example of Agent handling a complex task
+// User request: "Create a React component for a user profile 
+// that fetches data from an API and shows loading state"
+
+// Agent can generate complete solution like:
+import React, { useState, useEffect } from 'react';
+import './UserProfile.css';
+
+const UserProfile = ({ userId }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchUserData(userId);
+  }, [userId]);
+
+  const fetchUserData = async (id) => {
+    try {
+      const response = await fetch(`/api/users/${id}`);
+      const data = await response.json();
+      setUser(data);
+      setLoading(false);
+    } catch (err) {
+      setError('Failed to load user data');
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error">{error}</div>;
+
+  return (
+    <div className="user-profile">
+      <h2>{user.name}</h2>
+      <p>{user.email}</p>
+      {/* More user details */}
+    </div>
+  );
+};
+
+export default UserProfile;
+</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Agent mode is one of Cursor's most powerful features, allowing users to complete complex coding tasks from end to end while still staying in control of the process. The agent can understand requirements, generate appropriate code, and execute multi-step tasks efficiently.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Chat with Codebase</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>AI chat that <span class="highlight">sees your codebase</span></li>
+									<li>Always sees current file and cursor position</li>
+									<li>Add code blocks with <span class="highlight">Ctrl+Shift+L</span> or <span class="highlight">@</span></li>
+									<li>Chat with entire codebase using <span class="highlight">Ctrl+Enter</span></li>
+									<li>Instantly apply code suggestions with the play button</li>
+									<li>Use <span class="highlight">@Codebase</span> for searching relevant code</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="Cursor Chat Interface">
+								<p class="img-caption">[Placeholder] Cursor Chat Interface showing codebase awareness</p>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor's Chat feature provides an AI assistant that can see your codebase, making it much more context-aware than generic AI assistants. It understands the current file you're working on and where your cursor is positioned, which enables it to give much more relevant advice and code suggestions.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Tab Completion</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Powerful autocomplete that <span class="highlight">predicts your next edit</span></li>
+									<li>Always on after enabling</li>
+									<li>Suggests edits <span class="highlight">across multiple lines</span></li>
+									<li>Takes into account your <span class="highlight">recent changes</span></li>
+									<li>Provides smart rewrites to fix mistakes</li>
+									<li>Predicts next cursor position for seamless navigation</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="Cursor Tab Completion">
+								<p class="img-caption">[Placeholder] Tab completion suggesting multi-line edits</p>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor's Tab completion feature goes beyond traditional code completion by predicting entire blocks of code across multiple lines. It adapts to your coding style and recent changes, making suggestions more relevant and useful over time.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Ctrl+K Editing</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Edit and write code <span class="highlight">with AI assistance</span></li>
+									<li>Select code, press <span class="highlight">Ctrl+K</span>, describe the change</li>
+									<li>Generate new code by pressing Ctrl+K without selection</li>
+									<li>Use in terminal for <span class="highlight">natural language commands</span></li>
+									<li>"Quick Questions" feature for instant code explanations</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="javascript">
+// Example of using Ctrl+K to transform code
+// Selected code:
+function calculateTotal(items) {
+  let total = 0;
+  for (let i = 0; i < items.length; i++) {
+    total += items[i].price;
+  }
+  return total;
+}
+
+// User request with Ctrl+K: "Convert to use reduce"
+
+// Transformed code:
+function calculateTotal(items) {
+  return items.reduce((total, item) => total + item.price, 0);
+}
+</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Ctrl+K is Cursor's universal shortcut for AI-assisted editing. It works contextually - when you select code and press Ctrl+K, you can describe how to change it; when you press Ctrl+K without a selection, you can generate entirely new code. The feature even works in the terminal for natural language command generation.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Additional Features</h3>
+						<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px;">
+							<div>
+								<h4>Reference & Documentation</h4>
+								<ul>
+									<li>Reference code with @ symbols</li>
+									<li>Include images for visual context</li>
+									<li>Search the web with @Web</li>
+									<li>Reference libraries with @LibraryName</li>
+								</ul>
+							</div>
+							<div>
+								<h4>Terminal Integration</h4>
+								<ul>
+									<li>Terminal Ctrl+K for natural language commands</li>
+									<li>Automatic command running (with approval)</li>
+									<li>Error detection and fixing</li>
+								</ul>
+							</div>
+							<div>
+								<h4>Code Quality</h4>
+								<ul>
+									<li>Automatic lint error detection</li>
+									<li>Smart rewrites for mistakes</li>
+									<li>Multi-line edits for consistency</li>
+								</ul>
+							</div>
+							<div>
+								<h4>Security & Customization</h4>
+								<ul>
+									<li>SOC 2 Certified</li>
+									<li>Customizable models</li>
+									<li>Ignore files for sensitive data</li>
+								</ul>
+							</div>
+						</div>
+						<div class="slide-citation">
+							Source: https://www.cursor.com/features
+						</div>
+						<aside class="notes">
+							Cursor includes many additional productivity features that enhance the coding experience. These include powerful reference capabilities, terminal integration, code quality tools, and important security and customization options to fit different development needs.
+						</aside>
+					</section>
+				</section>
+
+				<!-- 4. Model Context Protocol Section -->
+				<section>
+					<section>
+						<h2 class="bg-header">Model Context Protocol</h2>
+						<h3>Understanding MCP Architecture</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li><span class="highlight">Open protocol</span> that standardizes how applications provide context to LLMs</li>
+									<li>Acts like a <span class="highlight">USB-C port for AI</span> applications</li>
+									<li>Connects AI models to <span class="fragment highlight-blue" data-fragment-index="1"><strong>data sources and tools</strong></span></li>
+									<li>Enables <span class="highlight">switching between LLM providers</span></li>
+									<li>Ensures <span class="highlight">data security</span> within your infrastructure</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="javascript">
+// MCP architecture concept
+const mcp = {
+  hosts: ["Cursor", "Claude Desktop", "Other AI tools"],
+  clients: ["Protocol clients with 1:1 server connections"],
+  servers: ["Lightweight programs exposing capabilities"],
+  dataSources: ["Local files", "Databases", "Services"],
+  remoteServices: ["External APIs", "Web services"]
+};
+</code></pre>
+								<p class="img-caption">MCP architecture overview</p>
+							</div>
+						</div>
+						<aside class="notes">
+							The Model Context Protocol (MCP) is an open protocol that standardizes how applications provide context to LLMs. Think of MCP like a USB-C port for AI applications - just as USB-C provides a standardized way to connect devices to peripherals, MCP provides a standardized way to connect AI models to data sources and tools.
+						</aside>
+					</section>
+
+					<section>
+						<h3>MCP Architecture</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li><span class="highlight">MCP Hosts</span>: Programs like Cursor, Claude Desktop, or AI tools</li>
+									<li><span class="highlight">MCP Clients</span>: Protocol clients with 1:1 server connections</li>
+									<li><span class="highlight">MCP Servers</span>: Lightweight programs exposing capabilities</li>
+									<li><span class="highlight">Data Sources</span>: Local files, databases, services</li>
+									<li><span class="highlight">Remote Services</span>: External APIs and web services</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="MCP Architecture Diagram">
+								<p class="img-caption">[Placeholder] MCP Architecture Diagram</p>
+							</div>
+						</div>
+						<aside class="notes">
+							MCP follows a client-server architecture where a host application can connect to multiple servers. The architecture consists of MCP Hosts (programs like Cursor or Claude Desktop), MCP Clients (protocol clients with 1:1 server connections), MCP Servers (lightweight programs exposing capabilities), Local Data Sources (your computer's files, databases, and services), and Remote Services (external systems accessible over the internet).
+						</aside>
+					</section>	
+
+					<section>
+						<h3>MCP Transport Types</h3>
+						<div class="container">
+							<div class="col">
+								<table class="data-table">
+									<thead>
+										<tr>
+											<th>Feature</th>
+											<th>stdio Transport</th>
+											<th>SSE Transport</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Hosting</td>
+											<td>Local machine</td>
+											<td class="highlight-cell">Local or remote</td>
+										</tr>
+										<tr>
+											<td>Management</td>
+											<td>Automatic by Cursor</td>
+											<td>Manual by user</td>
+										</tr>
+										<tr>
+											<td>Communication</td>
+											<td>Direct via stdout</td>
+											<td class="highlight-cell">Over network</td>
+										</tr>
+										<tr>
+											<td>Accessibility</td>
+											<td>Local only</td>
+											<td class="highlight-cell">Can be shared</td>
+										</tr>
+										<tr>
+											<td>Input format</td>
+											<td>Shell command</td>
+											<td>URL to /sse endpoint</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="col">
+								<pre><code class="json">
+// Configuration for stdio transport
+{
+  "mcpServers": {
+    "server-name": {
+      "command": "npx",
+      "args": ["-y", "mcp-server"],
+      "env": {
+        "API_KEY": "value"
+      }
+    }
+  }
+}
+
+// URL for SSE transport
+http://example.com:8000/sse
+</code></pre>
+							</div>
+						</div>
+						<div class="slide-citation">
+							Source: https://docs.cursor.com/context/model-context-protocol
+						</div>
+						<aside class="notes">
+							Cursor supports two transport types for MCP servers: stdio transport (runs locally, managed by Cursor, communicates via stdout, only accessible locally) and SSE transport (can run locally or remotely, managed by you, communicates over the network, can be shared). Each transport type has different use cases, with stdio being simpler for local development and SSE offering more flexibility for distributed teams.
+						</aside>
+					</section>
+
+					<section>
+						<h3>MCP Configuration</h3>
+						<div class="container">
+							<div class="col">
+								<h4>Configuration Locations:</h4>
+								<ul>
+									<li><span class="highlight">Project Configuration</span>: <br><code>.cursor/mcp.json</code> in project directory</li>
+									<li><span class="highlight">Global Configuration</span>: <br><code>~/.cursor/mcp.json</code> in home directory</li>
+								</ul>
+								<h4>Configuration Structure:</h4>
+								<ul>
+									<li><code>command</code>: The executable to run</li>
+									<li><code>args</code>: Command line arguments</li>
+									<li><code>env</code>: Environment variables</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="json">
+// Example Project-specific MCP configuration
+{
+  "mcpServers": {
+    "database-accessor": {
+      "command": "python",
+      "args": ["-m", "mcp_database_server"],
+      "env": {
+        "DB_CONNECTION": "postgres://user:pass@localhost/db",
+        "API_KEY": "sk-xxxx"
+      }
+    },
+    "documentation-lookup": {
+      "command": "npx",
+      "args": ["-y", "mcp-docs-server"],
+      "env": {
+        "DOCS_PATH": "./documentation"
+      }
+    }
+  }
+}
+</code></pre>
+							</div>
+						</div>
+						<div class="slide-citation">
+							Source: https://docs.cursor.com/context/model-context-protocol
+						</div>
+						<aside class="notes">
+							MCP configuration can be placed in two locations: project-specific (in a .cursor/mcp.json file in your project directory) or global (in a ~/.cursor/mcp.json file in your home directory). The configuration file uses a JSON format that specifies the command to run, its arguments, and environment variables that will be available to your MCP server process.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Using MCP in Cursor</h3>
+						<div class="container">
+							<div class="col">
+								<h4>Automatic Tool Usage:</h4>
+								<ul>
+									<li>Composer Agent <span class="highlight">automatically</span> uses relevant MCP tools</li>
+									<li>Tools are listed under <span class="highlight">'Available Tools'</span> in MCP settings</li>
+									<li>You can intentionally prompt tool usage by <span class="highlight">mentioning the tool</span></li>
+								</ul>
+								<h4>Tool Approval:</h4>
+								<ul>
+									<li>By default, Agent asks for <span class="highlight">approval</span> before using MCP tools</li>
+									<li>You can enable <span class="highlight">auto-run</span> for automatic execution</li>
+									<li>Tool responses are displayed in the chat</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="MCP Tool Usage in Cursor">
+								<p class="img-caption">[Placeholder] MCP Tool Usage in Cursor</p>
+							</div>
+						</div>
+						<div class="slide-citation">
+							Source: https://docs.cursor.com/context/model-context-protocol
+						</div>
+						<aside class="notes">
+							In Cursor, the Composer Agent automatically uses MCP tools listed under 'Available Tools' in the MCP settings when it determines they are relevant. You can prompt tool usage intentionally by mentioning the tool by name or description. By default, when Agent wants to use an MCP tool, it will ask for your approval, but you can enable auto-run for automatic execution.
+						</aside>
+					</section>
+				</section>
+
+				<!-- 5. MCP Implementation Section -->
+				<section>
+					<section>
+						<h2 class="bg-header">MCP Implementation</h2>
+						<h3>Building with MCP</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Integrating MCP into existing projects</li>
+									<li>Creating custom MCP servers</li>
+									<li>Utilizing MCP for stateful conversations</li>
+									<li>Implementing function calling</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="MCP Implementation">
+								<p class="img-caption">MCP Implementation visual representation</p>
+							</div>
+						</div>
+						<aside class="notes">
+							MCP implementation involves integrating MCP into existing projects, creating custom MCP servers, utilizing MCP for stateful conversations, and implementing function calling.
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Integrating MCP into Existing Projects</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Existing codebase integration</li>
+									<li>API integration</li>
+									<li>Configuration management</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="html">&lt;section data-markdown&gt;
+  &lt;textarea data-template&gt;
+    # Slide Title
+    
+    * Bullet point 1
+    * Bullet point 2
+    
+    ---
+    
+    ## Next Slide
+    
+    ```javascript
+    let code = "highlighted";
+    ```
+  &lt;/textarea&gt;
+&lt;/section&gt;</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Integrating MCP into existing projects involves Existing codebase integration, API integration, and Configuration management.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Creating Custom MCP Servers</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Model selection</li>
+									<li>Server configuration</li>
+									<li>Authentication setup</li>
+									<li>Rate limiting</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="html">&lt;section data-markdown&gt;
+  &lt;textarea data-template&gt;
+    # Slide Title
+    
+    * Bullet point 1
+    * Bullet point 2
+    
+    ---
+    
+    ## Next Slide
+    
+    ```javascript
+    let code = "highlighted";
+    ```
+  &lt;/textarea&gt;
+&lt;/section&gt;</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Creating custom MCP servers involves Model selection, Server configuration, Authentication setup, and Rate limiting.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Utilizing MCP for Stateful Conversations</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Conversation history management</li>
+									<li>Contextual understanding</li>
+									<li>Function calling</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="html">&lt;section data-markdown&gt;
+  &lt;textarea data-template&gt;
+    # Slide Title
+    
+    * Bullet point 1
+    * Bullet point 2
+    
+    ---
+    
+    ## Next Slide
+    
+    ```javascript
+    let code = "highlighted";
+    ```
+  &lt;/textarea&gt;
+&lt;/section&gt;</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Utilizing MCP for stateful conversations involves Conversation history management, Contextual understanding, and Function calling.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Implementing Function Calling</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Calling external tools</li>
+									<li>Integration with AI models</li>
+									<li>Enhanced capabilities</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="html">&lt;section data-markdown&gt;
+  &lt;textarea data-template&gt;
+    # Slide Title
+    
+    * Bullet point 1
+    * Bullet point 2
+    
+    ---
+    
+    ## Next Slide
+    
+    ```javascript
+    let code = "highlighted";
+    ```
+  &lt;/textarea&gt;
+&lt;/section&gt;</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Implementing function calling involves Calling external tools, Integration with AI models, and Enhanced capabilities.
+						</aside>
+					</section>
+				</section>
+
+				<!-- 6. Practical Applications Section -->
+				<section>
+					<section>
+						<h2 class="bg-header">Practical Applications</h2>
+						<h3>Real-world use cases of Cursor and MCP</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li><span class="highlight">Code refactoring</span> - Modernizing existing codebases</li>
+									<li><span class="highlight">Feature implementation</span> - Adding new functionality quickly</li>
+									<li><span class="highlight">Bug fixing</span> - Finding and resolving issues</li>
+									<li><span class="highlight">Documentation</span> - Generating and improving docs</li>
+									<li><span class="highlight">Custom tool integration</span> - Extending functionality with MCP</li>
+								</ul>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="Practical Applications">
+								<p class="img-caption">[Placeholder] Cursor practical applications</p>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor and MCP have numerous practical applications in real-world development scenarios. These include code refactoring, feature implementation, bug fixing, documentation generation, and custom tool integration through MCP.
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Code Refactoring with Cursor</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Modernize legacy code patterns</li>
+									<li>Convert between programming paradigms</li>
+									<li>Optimize performance-critical sections</li>
+									<li>Improve code readability and maintainability</li>
+									<li>Standardize coding conventions</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="javascript">
+// Before refactoring: Callback-based API
+function fetchData(url, callback) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', url);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      callback(null, JSON.parse(xhr.responseText));
+    } else {
+      callback(new Error('Request failed'));
+    }
+  };
+  xhr.onerror = function() {
+    callback(new Error('Network error'));
+  };
+  xhr.send();
+}
+
+// After refactoring with Cursor: Promise-based API
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Request failed');
+    }
+    return await response.json();
+  } catch (error) {
+    throw new Error('Network error: ' + error.message);
+  }
+}
+</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor excels at code refactoring tasks, enabling developers to modernize legacy code, convert between programming paradigms (like callbacks to promises/async-await), optimize performance, improve readability, and standardize coding conventions across a codebase.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Feature Implementation with Agent Mode</h3>
+						<div class="container">
+							<div class="col">
+								<ol>
+									<li>Describe the feature in natural language</li>
+									<li>Agent breaks task into logical steps</li>
+									<li>Generates and explains implementation</li>
+									<li>Handles edge cases and error states</li>
+									<li>Creates appropriate tests</li>
+								</ol>
+							</div>
+							<div class="col">
+								<img src="resources/images/revealjs.png" alt="Agent Feature Implementation">
+								<p class="img-caption">[Placeholder] Agent implementing a feature end-to-end</p>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor's Agent mode streamlines feature implementation by allowing developers to describe what they need in natural language. The agent then breaks the task into logical steps, generates appropriate code, handles edge cases, and can even create tests for the new functionality.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Bug Fixing with Codebase Understanding</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li>Identify bugs through error messages</li>
+									<li>Understand root causes through codebase search</li>
+									<li>Generate appropriate fixes</li>
+									<li>Explain changes and their impact</li>
+									<li>Suggest preventative measures</li>
+								</ul>
+							</div>
+							<div class="col">
+								<pre><code class="javascript">
+// Bug: This React component causes infinite re-renders
+function UserProfile({ userId }) {
+  const [userData, setUserData] = useState(null);
+  
+  // Bug: This effect creates an infinite loop!
+  useEffect(() => {
+    setUserData(fetchUserData(userId));
+  });  // Missing dependency array
+  
+  return (/* component JSX */);
+}
+
+// Fixed version with Cursor
+function UserProfile({ userId }) {
+  const [userData, setUserData] = useState(null);
+  
+  // Fixed: Added dependency array with userId
+  useEffect(() => {
+    setUserData(fetchUserData(userId));
+  }, [userId]);
+  
+  return (/* component JSX */);
+}
+</code></pre>
+							</div>
+						</div>
+						<aside class="notes">
+							Cursor's codebase understanding is particularly helpful for bug fixing. It can analyze error messages, understand the root cause through searching the codebase, generate appropriate fixes, explain the changes and their impact, and even suggest ways to prevent similar bugs in the future.
+						</aside>
+					</section>
+
+					<section>
+						<h3>Custom MCP Integrations</h3>
+						<div class="container">
+							<div class="col">
+								<h4>Database Integration</h4>
+								<ul>
+									<li>Query databases directly from Cursor</li>
+									<li>Generate appropriate SQL/queries</li>
+									<li>Use results to guide code generation</li>
+								</ul>
+								<h4>API Integration</h4>
+								<ul>
+									<li>Fetch API documentation</li>
+									<li>Generate client code</li>
+									<li>Test endpoints</li>
+								</ul>
+							</div>
+							<div class="col">
+								<h4>Documentation Engine</h4>
+								<ul>
+									<li>Generate docs from codebase</li>
+									<li>Keep documentation in sync with code</li>
+									<li>Answer questions about code</li>
+								</ul>
+								<h4>Custom Tools</h4>
+								<ul>
+									<li>Create project-specific tools</li>
+									<li>Integrate with proprietary systems</li>
+									<li>Build team-specific assistants</li>
+								</ul>
+							</div>
+						</div>
+						<div class="slide-citation">
+							MCP servers can be written in any language that can print to stdout or serve an HTTP endpoint
+						</div>
+						<aside class="notes">
+							The Model Context Protocol allows for powerful custom integrations with Cursor. These include database integration for direct querying, API integration for documentation fetching and client generation, documentation engines that keep docs in sync with code, and completely custom tools specific to a project or team's needs.
+						</aside>
+					</section>
+				</section>
+
+				<!-- 7. Discussion Section -->
+				<section>
+					<h2 class="bg-header">Discussion & Practical Exercises</h2>
+					<div class="container">
+						<div class="col">
+							<h3>Key Takeaways</h3>
+							<ul>
+								<li><span class="highlight">Cursor</span> enhances coding productivity with AI assistance</li>
+								<li><span class="highlight">MCP</span> standardizes AI model context communication</li>
+								<li><span class="highlight">Agent mode</span> completes complex coding tasks end-to-end</li>
+								<li><span class="highlight">Custom integrations</span> extend functionality via MCP</li>
+								<li><span class="highlight">Real-world applications</span> span refactoring, feature development, and more</li>
+							</ul>
+						</div>
+						<div class="col">
+							<h3>Practice Exercise Ideas</h3>
+							<ul>
+								<li>Set up Cursor with project-specific MCP tools</li>
+								<li>Create a simple custom MCP server</li>
+								<li>Use Agent mode to implement a feature</li>
+								<li>Refactor legacy code with Cursor's assistance</li>
+								<li>Develop documentation using Chat and MCP</li>
+								<li>Debug complex code issues with codebase search</li>
+							</ul>
+						</div>
+					</div>
+					<aside class="notes">
+						This discussion section summarizes what we've covered about Cursor and MCP while providing practical exercise ideas to help participants gain hands-on experience. The exercises range from basic setup and usage to more advanced custom tool development.
+					</aside>
+				</section>
+				<section>
+					<h3>Resources for Further Learning</h3>
+					<ul>
+						<li><a href="https://www.cursor.com/features">Cursor Features Documentation</a></li>
+						<li><a href="https://docs.cursor.com/context/model-context-protocol">Cursor MCP Documentation</a></li>
+						<li><a href="https://modelcontextprotocol.io/introduction">Model Context Protocol Official Documentation</a></li>
+						<li><a href="https://github.com/cursor-ai">Cursor GitHub Organization</a></li>
+						<li><a href="https://github.com/anthropics/anthropic-tools">Anthropic Tools Repository (MCP examples)</a></li>
+					</ul>
+					<div class="slide-citation">
+						Visit the Cursor website and documentation for the most up-to-date information and tutorials
+					</div>
+				</section>
+
+				<!-- 8. Thank You Slide -->
+				<section class="grid-slide">
+					<h1 class="text-center"><strong>Thank You</strong></h1>
+					<p class="text-center" style="font-size: 1em;">Questions?</p>
+					<div class="citation text-center">
+						<p>Key References:</p>
+						<p><span class="highlight-text">Cursor</span>: AI-powered code editor built on VSCode</p>
+						<p><span class="highlight-text">MCP</span>: Open protocol for standardizing AI model context</p>
+					</div>
+					<div class="author-info text-center" style="opacity: 0.7;">
+						<p><span class="presenter-name"></span><br>
+						<span class="presenter-email"></span><br>
+					</div>
+					<p class="text-center" style="font-size: 0.5em; margin-top: 40px; opacity: 0.7;">This presentation was created for the Special Topics in Data Science class on Prompt Engineering.</p>
+					<aside class="notes">
+						Thank you for attending this presentation on Cursor and the Model Context Protocol. Feel free to reach out with any questions or for further discussion on these topics.
+					</aside>
+				</section>
+			</div>
+		</div>
+
+		<!-- Load reveal.js scripts -->
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+	</body>
+</html>
