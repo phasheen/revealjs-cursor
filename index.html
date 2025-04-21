@@ -14,7 +14,7 @@
 		<!-- Core Reveal.js styles -->
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/white.css">
+		<link rel="stylesheet" href="dist/theme/sky.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -24,18 +24,24 @@
 		
 		<!-- HTTPS redirect and presenter info script -->
 		<script src="custom/custom-scripts.js"></script>
+		
+		<!-- Mermaid Plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@11.4.1/plugin/mermaid/mermaid.js"></script>
 	</head>
 	<body>
 		<div class="reveal"">
 			<div class="slides">
 				<!-- 1. Title Slide -->
 				<section data-background="resources/images/cursor-website.png" data-background-opacity="1" data-background-size="cover">
-					<div style="background-color: rgba(255, 255, 255, 0.9); padding: 30px; border-radius: 10px; max-width: 90%; margin: 0 auto;">
+					<div style="height: 100px;"></div>
+					<div style="background-color: rgba(232, 247, 251, 0.9); padding: 30px; border-radius: 10px; max-width: 90%; margin: 0 auto;">
 						<h1><strong>Cursor & Model Context Protocol</strong></h1>
 						<h3>AI-Powered Coding for Enhanced Productivity</h3>
-						<p class="author-info"><span class="presenter-name"></span><br>
-						Team: <span class="presenter-dept"></span><br>
-						<span class="presenter-univ"></span></p>
+						<p class="author-info">
+							<span class="presenter-name" style="font-size: 1.2em;"></span><br>
+							<span style="font-weight: 500;">Team:</span> 😈<span class="presenter-dept" style="font-style: normal;"></span>🔥<br>
+							<span class="presenter-univ" style="text-decoration: underline;"></span>
+						</p>
 						<p class="smalltext">Today: <span class="presentation-date"></span></p>
 						<p class="smalltext">Session: <span class="session-name"></p>
 					</div>
@@ -76,8 +82,8 @@
 								</ul>
 							</div>
 							<div class="col">
-								<img src="resources/images/revealjs.png" alt="Cursor editor interface">
-								<p class="img-caption">[Placeholder] Cursor editor interface</p>
+								<img src="resources/images/cursor-interface.png" alt="Cursor editor interface" style="box-shadow: none!important;">
+								<p class="img-caption">Cursor editor interface</p>
 							</div>
 						</div>
 						<aside class="notes">
@@ -153,8 +159,8 @@
 								</ul>
 							</div>
 							<div class="col">
-								<img src="resources/images/revealjs.png" alt="Cursor features overview">
-								<p class="img-caption">[Placeholder] Cursor features overview</p>
+								<img src="resources/images/cursor-feature.png" alt="Cursor features overview" style="max-height: 450px;">
+								<p class="img-caption">Cursor features overview</p>
 							</div>
 						</div>
 						<aside class="notes">
@@ -240,8 +246,8 @@ export default UserProfile;
 								</ul>
 							</div>
 							<div class="col">
-								<img src="resources/images/revealjs.png" alt="Cursor Chat Interface">
-								<p class="img-caption">[Placeholder] Cursor Chat Interface showing codebase awareness</p>
+								<img src="resources/images/cursor-mode.png" alt="Cursor Chat Interface">
+								<p class="img-caption">Cursor Chat Interface</p>
 							</div>
 						</div>
 						<aside class="notes">
@@ -263,8 +269,8 @@ export default UserProfile;
 								</ul>
 							</div>
 							<div class="col">
-								<img src="resources/images/revealjs.png" alt="Cursor Tab Completion">
-								<p class="img-caption">[Placeholder] Tab completion suggesting multi-line edits</p>
+								<img src="resources/images/cursor-tab.png" alt="Cursor Tab Completion">
+								<p class="img-caption">Tab completion suggesting multi-line edits</p>
 							</div>
 						</div>
 						<aside class="notes">
@@ -372,16 +378,37 @@ function calculateTotal(items) {
 								</ul>
 							</div>
 							<div class="col">
-								<pre><code class="javascript">
-// MCP architecture concept
-const mcp = {
-  hosts: ["Cursor", "Claude Desktop", "Other AI tools"],
-  clients: ["Protocol clients with 1:1 server connections"],
-  servers: ["Lightweight programs exposing capabilities"],
-  dataSources: ["Local files", "Databases", "Services"],
-  remoteServices: ["External APIs", "Web services"]
-};
-</code></pre>
+								<div class="mermaid">
+									<pre>
+flowchart LR
+  %% Define a reusable class for consistent styling
+  classDef common fill:#e0e0ff,stroke:#4b0082,stroke-width:1px,color:#000080;
+
+  subgraph "Your Computer"
+    direction TB
+    client["Host with MCP Client<br>(Claude, IDEs, Tools)"]:::common
+
+    subgraph "MCP Servers"
+      direction LR
+      A["MCP Server A"]:::common --> DataA[(Local Data Source A)]:::common
+      B["MCP Server B"]:::common --> DataB[(Local Data Source B)]:::common
+      C["MCP Server C"]:::common --> Web[(Web APIs)]:::common
+    end
+  end
+
+  subgraph Internet
+    Remote[(Remote Service C)]:::common
+  end
+
+  client -->|MCP Protocol| A
+  client -->|MCP Protocol| B
+  client -->|MCP Protocol| C
+
+  DataA --> A
+  DataB --> B
+  Web   --> Remote
+									</pre>
+								</div>
 								<p class="img-caption">MCP architecture overview</p>
 							</div>
 						</div>
@@ -403,8 +430,28 @@ const mcp = {
 								</ul>
 							</div>
 							<div class="col">
-								<img src="resources/images/revealjs.png" alt="MCP Architecture Diagram">
-								<p class="img-caption">[Placeholder] MCP Architecture Diagram</p>
+								<div class="mermaid">
+									<pre>
+flowchart TD
+  classDef hosts fill:#f9f9ff,stroke:#333,stroke-width:1px
+  classDef clients fill:#e6f3ff,stroke:#333,stroke-width:1px
+  classDef servers fill:#f0fff0,stroke:#333,stroke-width:1px
+  classDef data fill:#fff0f0,stroke:#333,stroke-width:1px
+  classDef remote fill:#f5f5f5,stroke:#333,stroke-width:1px
+  
+  Host["MCP Hosts<br>(Cursor, Claude Desktop)"]:::hosts
+  Client["MCP Clients<br>(Protocol clients)"]:::clients
+  Server["MCP Servers<br>(Lightweight programs)"]:::servers
+  Data["Data Sources<br>(Files, DBs, Services)"]:::data
+  Remote["Remote Services<br>(External APIs)"]:::remote
+  
+  Host --> Client
+  Client --> Server
+  Server --> Data
+  Server --> Remote
+									</pre>
+								</div>
+								<p class="img-caption">MCP Architecture Diagram</p>
 							</div>
 						</div>
 						<aside class="notes">
@@ -540,16 +587,10 @@ http://example.com:8000/sse
 									<li>Tools are listed under <span class="highlight">'Available Tools'</span> in MCP settings</li>
 									<li>You can intentionally prompt tool usage by <span class="highlight">mentioning the tool</span></li>
 								</ul>
-								<h4>Tool Approval:</h4>
-								<ul>
-									<li>By default, Agent asks for <span class="highlight">approval</span> before using MCP tools</li>
-									<li>You can enable <span class="highlight">auto-run</span> for automatic execution</li>
-									<li>Tool responses are displayed in the chat</li>
-								</ul>
 							</div>
 							<div class="col">
-								<img src="resources/images/revealjs.png" alt="MCP Tool Usage in Cursor">
-								<p class="img-caption">[Placeholder] MCP Tool Usage in Cursor</p>
+								<img src="resources/images/cursor-mcp.png" alt="MCP Tool Usage in Cursor">
+								<p class="img-caption">MCP Tool Settings in Cursor</p>
 							</div>
 						</div>
 						<div class="slide-citation">

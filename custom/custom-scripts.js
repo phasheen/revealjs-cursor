@@ -134,10 +134,16 @@ window.addEventListener('load', function() {
             minScale: 0.5
         },
         
+        // Mermaid configuration
+        mermaid: {
+            // Default configuration for Mermaid
+            theme: 'default'
+        },
+        
         // Control options
         controls: true,	
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight, RevealMath.KaTeX ]
+        plugins: [RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealMermaid ]
     });
     
     // Add event to automatically transition fragments

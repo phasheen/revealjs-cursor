@@ -3,17 +3,30 @@
 	--theme-color-transparent-10: rgba(42, 118, 221, 0.1);
 	--theme-color-transparent-15: rgba(42, 118, 221, 0.15);
 	--theme-color-transparent-20: rgba(42, 118, 221, 0.2);
+	--main-font: 'Montserrat', sans-serif;
 }
 
 body {
 	background-color: #f5f5f5;
 }
-.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+
+/* Override all Reveal.js theme fonts */
+.reveal {
+	font-family: var(--main-font) !important;
+}
+
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4, 
+.reveal h5, 
+.reveal h6 {
+	font-family: var(--main-font) !important;
 	color: var(--theme-color);
-	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
 	text-transform: none;
 }
+
 .reveal h1 {
 	font-size: 1.6em;
 	margin-bottom: 0.5em;
@@ -26,8 +39,17 @@ body {
 	font-size: 1em;
 	margin-bottom: 0.3em;
 }
+.reveal p, 
+.reveal li, 
+.reveal div,
+.reveal span,
+.reveal blockquote,
+.reveal td,
+.reveal th {
+	font-family: var(--main-font) !important;
+}
+
 .reveal p, .reveal li {
-	font-family: 'Montserrat', sans-serif;
 	font-size: 0.7em;
 	line-height: 1.5;
 }
@@ -165,6 +187,11 @@ body {
 	overflow-x: hidden;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+.data-table th,
+.data-table td,
+.data-table tr {
+	font-family: var(--main-font) !important;
+}
 .data-table th {
 	background-color: rgba(42, 118, 221, 0.2);
 	color: #333;
@@ -245,6 +272,7 @@ body {
 	max-width: 1000px;
 	text-align: left;
 	color: #555;
+	font-family: var(--main-font) !important;
 }
 /* Before-After Comparison Styles */
 .bal-container-small {
@@ -384,4 +412,51 @@ body {
 	filter: grayscale(100%);
 	z-index:-1;
 	overflow: hidden;
+}
+
+/* Ensure code blocks don't get affected by font overrides */
+.reveal pre,
+.reveal code {
+	font-family: monospace !important;
+}
+
+/* Preserve monospace in code blocks but use Montserrat in code block headers/titles */
+.reveal pre code {
+	font-family: monospace !important;
+}
+
+/* Ensure Montserrat is used for all heading elements */
+.reveal .slides section h1, 
+.reveal .slides section h2, 
+.reveal .slides section h3, 
+.reveal .slides section h4, 
+.reveal .slides section h5, 
+.reveal .slides section h6 {
+    font-family: var(--main-font) !important;
+    letter-spacing: normal;
+}
+
+/* Ensure Montserrat is used for all text in custom elements */
+.bg-header,
+.highlight,
+.highlight-text,
+.highlight-cell,
+.smalltext,
+.citation {
+    font-family: var(--main-font) !important;
+}
+
+/* Override any remaining theme typography */
+.reveal .slides {
+    font-family: var(--main-font) !important;
+    text-transform: none;
+}
+
+/* Fix any potential theme-specific heading transformations */
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4 {
+    text-transform: none !important;
+    letter-spacing: normal !important;
 } 
