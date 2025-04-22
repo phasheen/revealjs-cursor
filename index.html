@@ -56,13 +56,16 @@
 					<ol>
 						<li><a href="#/2"><strong>Introduction to Cursor</strong></a> - AI-powered code editor</li>
 						<li><a href="#/3"><strong>Cursor Key Features</strong></a> - Agent, Chat, Tab, and more</li>
+							<ul style="font-size: 0.85em; margin-top: 5px;">
+								<li><a href="#/7"><strong>Codebase Indexing</strong></a> - How Cursor understands your code</li>
+							</ul>
 						<li><a href="#/8"><strong>Model Context Protocol</strong></a> - Understanding MCP architecture</li>
 						<li><a href="#/12"><strong>MCP Implementation</strong></a> - Building with MCP</li>
 						<li><a href="#/16"><strong>Practical Applications</strong></a> - Real-world use cases</li>
 						<li><a href="#/17"><strong>Discussion</strong></a> - Q&A and exercises</li>
 					</ol>
 					<aside class="notes">
-						This is our roadmap for today's session. We'll start with an introduction to Cursor, explore its key features, understand the Model Context Protocol, look at implementation details, examine practical applications, and finish with a discussion.
+						This is our roadmap for today's session. We'll start with an introduction to Cursor, explore its key features including codebase indexing, understand the Model Context Protocol, look at implementation details, examine practical applications, and finish with a discussion.
 					</aside>
 					<div class="slide-citation">Click on any section to jump directly to it</div>
 				</section>
@@ -358,6 +361,29 @@ function calculateTotal(items) {
 						</div>
 						<aside class="notes">
 							Cursor includes many additional productivity features that enhance the coding experience. These include powerful reference capabilities, terminal integration, code quality tools, and important security and customization options to fit different development needs.
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Codebase Indexing</h3>
+						<div class="container">
+							<div class="col">
+								<ul>
+									<li><span class="highlight">Local-first scan</span> – builds a Merkle-tree of your files (respects .gitignore/.cursorignore)</li>
+									<li><span class="highlight">Incremental updates</span> – every 10 minutes it diff-checks and only uploads changed chunks</li>
+									<li><span class="highlight">Vector embeddings</span> – files split into overlapping snippets and embedded server-side (with obfuscated paths)</li>
+									<li><span class="highlight">On-demand retrieval</span> – queries return only chunk IDs; Cursor reads the matching lines locally before prompting the LLM</li>
+								</ul>
+							</div>
+							<div class="col">
+								<video src="resources/videos/Codebase-understadning.mov" width="600" height="400" ></video>
+							</div>
+						</div>
+						<div class="slide-citation">
+							Source: <a href="https://www.cursor.com/security#codebase-indexing" target="_blank">https://www.cursor.com/security#codebase-indexing</a>
+						</div>
+						<aside class="notes">
+							Cursor's indexing engine lets you work on massive repos without re-uploading everything. By hashing and diffing locally, uploading only deltas, and storing hashed embeddings with obfuscated paths, it delivers sub-second code search and context for AI prompts—while ensuring your source code never leaks in full.
 						</aside>
 					</section>
 				</section>

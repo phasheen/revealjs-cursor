@@ -11,7 +11,7 @@ const presenterName = "Xianghui Xin, Jiayue Wang, Julian Felix Kieslinger";
 const presenterDepartment = "Hallumaker";
 const presenterUniversity = "Seoul National University";
 const presenterEmail = "phasheen@snu.ac.kr";
-const sessionName = "Special topics in datascience--Prompt engineering";
+const sessionName = "Knowledge Sharing #2";
 
 // Automatically get and format the current date
 const currentDate = new Date();
