@@ -423,6 +423,34 @@ body {
 /* Preserve monospace in code blocks but use Montserrat in code block headers/titles */
 .reveal pre code {
 	font-family: monospace !important;
+	font-size: 0.9em !important;
+}
+
+/* Target syntax highlighted code more specifically */
+.reveal .hljs,
+.reveal pre.hljs,
+.reveal code.hljs,
+.reveal div.hljs,
+.reveal pre .hljs {
+	font-family: monospace !important;
+	font-size: 0.9em !important;
+}
+
+/* Style for highlight.js */
+.hljs {
+	font-family: monospace !important;
+}
+
+/* Override any font changes in code blocks */
+code, pre, .hljs {
+	font-family: monospace !important;
+}
+
+/* Target code blocks more specifically */
+.reveal .slides pre,
+.reveal .slides code,
+.reveal .slides pre code {
+	font-family: monospace !important;
 }
 
 /* Ensure Montserrat is used for all heading elements */
