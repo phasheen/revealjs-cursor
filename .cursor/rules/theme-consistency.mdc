@@ -1,0 +1,120 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Theme Consistency
+
+This rule ensures visual and design consistency throughout the presentation, maintaining a professional appearance.
+
+## Color Scheme
+
+- Primary color: `#0F62FE` (Cursor blue)
+- Secondary color: `#2D2D2D` (Dark gray)
+- Accent color: `#16C172` (Green for highlights)
+- Background color: `#F5F7FA` (Light gray for content slides)
+- Text color: `#121619` (Near black for readability)
+
+Use these colors consistently throughout slides. For emphasis, use the accent color sparingly.
+
+## Typography
+
+- Headings: 'Poppins', sans-serif
+- Body text: 'Inter', sans-serif
+- Code: 'Fira Code', monospace
+
+Font sizing:
+- H1: 3.5rem (56px)
+- H2: 2.5rem (40px)
+- H3: 1.8rem (28px)
+- Body text: 1.2rem (20px)
+- Code: 1rem (16px)
+
+Ensure sufficient contrast between text and background (minimum ratio 4.5:1).
+
+## Spacing and Layout
+
+- Content padding: 50px from all edges
+- Element spacing: 30px between major elements
+- Text line height: 1.5 for body text
+- List item spacing: 18px
+
+Use the grid system consistently:
+- Single column for title slides
+- 1-2 columns for content slides
+- 3 columns maximum for comparison slides
+
+## Visual Elements
+
+### Images and Icons
+- Use SVG icons when possible for crisp scaling
+- Ensure images are high-resolution (minimum 2x for displays)
+- Maintain consistent icon size (32px is standard)
+- Apply subtle shadows for depth: `box-shadow: 0 4px 6px rgba(0,0,0,0.1)`
+
+### Code Snippets
+- Use consistent background color for all code blocks: `#282C34`
+- Code font should be monospaced with syntax highlighting
+- Padding inside code blocks: 16px
+- Apply subtle border radius: `border-radius: 4px`
+
+### Animations and Transitions
+- Use consistent slide transitions (fade is default)
+- Apply animations sparingly and with purpose
+- Standard duration for transitions: 0.3s
+- Use `data-auto-animate` for related content slides
+
+## Components
+
+### Buttons
+```html
+<button class="cursor-button">Action</button>
+```
+
+### Info Boxes
+```html
+<div class="info-box">
+  <h4>Note</h4>
+  <p>Important information highlighted here</p>
+</div>
+```
+
+### Quote Blocks
+```html
+<blockquote>
+  <p>"Quote text here"</p>
+  <cite>— Author Name</cite>
+</blockquote>
+```
+
+## Example CSS Implementation
+
+```css
+:root {
+  --primary-color: #0F62FE;
+  --secondary-color: #2D2D2D;
+  --accent-color: #16C172;
+  --bg-color: #F5F7FA;
+  --text-color: #121619;
+  
+  --heading-font: 'Poppins', sans-serif;
+  --body-font: 'Inter', sans-serif;
+  --code-font: 'Fira Code', monospace;
+}
+
+.reveal h1 {
+  font-family: var(--heading-font);
+  font-size: 3.5rem;
+  color: var(--primary-color);
+}
+
+.reveal h2 {
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+}
+
+/* Additional styling rules */
+```
+
+Maintaining this theme consistency will create a polished, professional appearance that reinforces the Cursor brand identity while ensuring optimal readability and information hierarchy.

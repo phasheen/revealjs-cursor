@@ -1,0 +1,25 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Model Context Protocol (MCP) Implementation Guide
+
+This rule provides guidance for implementing and discussing MCP features in the presentation.
+
+## Protocol Structure
+- MCP follows a client-server architecture as shown in [index.html](mdc:index.html)
+- Key components include MCP Hosts, Clients, Servers, and Data Sources
+- Configuration is stored in `.cursor/mcp.json` files (project or global level)
+
+## Code Examples
+- When showing MCP configuration examples, use proper JSON syntax
+- Include all required fields: `command`, `args`, and `env` where applicable
+- Provide realistic but non-sensitive values for environment variables
+
+## Terminology
+- Refer to MCP as "Model Context Protocol" on first usage in a section
+- Use consistent terminology as defined in the presentation
+- Describe MCP as "a standardized way to connect AI models to data sources and tools"
+
+When explaining MCP concepts, reference the diagrams and code examples from the existing presentation to maintain consistency.

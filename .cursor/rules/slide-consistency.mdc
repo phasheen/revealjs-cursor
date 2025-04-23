@@ -1,0 +1,164 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Slide Structure and Styling Standards
+
+This rule establishes standards for maintaining consistent structure and styling across all presentation slides.
+
+## Slide Layout
+
+### Title Slides
+Title slides should follow this structure:
+```html
+<section>
+  <h1>Main Presentation Title</h1>
+  <h3>Subtitle or tagline if needed</h3>
+  <p class="author">Presenter Name</p>
+  <p class="date">Presentation Date</p>
+</section>
+```
+
+### Content Slides
+Standard content slides should follow this structure:
+```html
+<section>
+  <h2>Slide Title</h2>
+  
+  <!-- Content goes here -->
+  
+  <footer class="slide-footer">
+    <span class="slide-number"></span>
+  </footer>
+</section>
+```
+
+### Section Divider Slides
+Section divider slides should be visually distinct:
+```html
+<section class="section-divider">
+  <h2>Section Title</h2>
+</section>
+```
+
+## Visual Elements
+
+### Color Palette
+Adhere to the primary color palette:
+- Primary: #3498db
+- Secondary: #2c3e50
+- Accent: #e74c3c
+- Background: #f5f5f5
+- Text: #333333
+
+For emphasis, use:
+- Success: #2ecc71
+- Warning: #f39c12
+- Error: #e74c3c
+- Info: #3498db
+
+### Typography
+- Headings: 'Open Sans', sans-serif
+- Body text: 'Roboto', sans-serif
+- Code: 'Fira Code', monospace
+
+Size hierarchy:
+- H1: 2.5em
+- H2: 2.0em
+- H3: 1.5em
+- Body text: 1.2em
+- Small text: 0.8em
+
+### Imagery Guidelines
+- Use consistent image aspect ratios when possible
+- Maintain padding of at least 20px around images
+- Apply subtle shadow to standalone images: `box-shadow: 0 4px 8px rgba(0,0,0,0.1)`
+- Use SVG for diagrams and icons when possible
+- Apply alt text to all images
+
+Example image placement:
+```html
+<div class="image-container">
+  <img src="path/to/image.jpg" alt="Descriptive alt text" width="600">
+  <p class="caption">Optional image caption</p>
+</div>
+```
+
+## Navigation and Transitions
+
+### Navigation Indicators
+Include consistent navigation cues:
+```html
+<div class="navigation-hints">
+  <span class="prev-hint">◀ Previous Topic</span>
+  <span class="next-hint">Next Topic ▶</span>
+</div>
+```
+
+### Transition Standards
+Use these transition types consistently:
+- Between standard slides: `fade`
+- To emphasize important slides: `zoom`
+- Between major sections: `slide`
+
+```html
+<section data-transition="fade">
+  <!-- Slide content -->
+</section>
+```
+
+## Interactive Elements
+
+### Clickable Elements
+Style clickable elements consistently:
+```html
+<button class="demo-button">Click to Demonstrate</button>
+```
+
+### Hover Effects
+Apply consistent hover effects to interactive elements:
+```css
+.interactive-element {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.interactive-element:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+```
+
+## Responsive Design
+
+### Breakpoints
+Design slides to work at these breakpoints:
+- Large displays: 1920px+
+- Standard: 1366px-1919px
+- Laptop: 1024px-1365px
+- Tablet: 768px-1023px
+- Mobile: <768px
+
+### Mobile Considerations
+For mobile viewing:
+- Increase font size by 20%
+- Stack horizontal elements vertically
+- Hide decorative elements
+- Ensure touch targets are at least 44x44px
+
+## Animation Guidelines
+
+### Animation Timing
+- Fast animations: 200-300ms
+- Standard transitions: 300-500ms
+- Emphasis animations: 500-800ms
+
+### Animation Types
+Use these animation classes consistently:
+```html
+<div class="animate fade-in">Fades in</div>
+<div class="animate slide-up">Slides up into view</div>
+<div class="animate bounce">Bounces to draw attention</div>
+```
+
+By following these standards, slides will maintain a consistent, professional appearance throughout the presentation.

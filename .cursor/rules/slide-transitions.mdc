@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Slide Transitions Guide
+
+This rule defines the standard transition effects to use between slides for a cohesive presentation flow.
+
+## Main Section Transitions
+- Use the "zoom" transition effect for main section breaks
+- Example: `<section data-transition="zoom">`
+- This visually signals to the audience a major topic change
+
+## Standard Slide Transitions
+- Use "slide" transition by default for sequential content
+- Example: `<section data-transition="slide">`
+- Maintain left-to-right flow for logical progression of ideas
+
+## Special Effect Transitions
+- Use "fade" for revealing supporting details or examples
+- Example: `<section data-transition="fade">`
+- Use "convex" for introducing demo sections
+- Example: `<section data-transition="convex">`
+
+## Nested Slides
+- For nested/vertical slides, use consistent "fade" transitions
+- Example: 
+```html
+<section>
+  <section data-transition="fade">First vertical slide</section>
+  <section data-transition="fade">Second vertical slide</section>
+</section>
+```
+
+## Code Demo Transitions
+- When transitioning to live code demonstrations, use "concave" transition
+- Example: `<section data-transition="concave">`
+- This visually prepares the audience for interactive content
+
+When adding new slides, select the appropriate transition based on the content's relationship to previous slides to create a natural, flowing presentation experience.

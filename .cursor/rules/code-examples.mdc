@@ -1,0 +1,212 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Code Example Standards
+
+This rule establishes standards for displaying and formatting code examples throughout the presentation.
+
+## General Code Formatting
+
+### Language Specification
+Always specify the language for syntax highlighting:
+
+```javascript
+// This is JavaScript code
+function example() {
+  return "Hello World";
+}
+```
+
+```python
+# This is Python code
+def example():
+    return "Hello World"
+```
+
+### Line Length
+- Keep code lines under 60 characters when possible
+- Split longer lines for readability
+- Maintain proper indentation when breaking lines
+
+### Font Size
+- Standard code: 1.0em
+- Important code highlights: 1.2em
+- Small code snippets: 0.9em
+
+## Code Presentation
+
+### Code Block Structure
+Structure code blocks with title and explanation:
+
+```html
+<div class="code-example">
+  <h3>Example: Function Declaration</h3>
+  
+  <pre><code class="javascript">function calculateTotal(items) {
+  return items.reduce((sum, item) => sum + item.price, 0);
+}</code></pre>
+  
+  <div class="code-explanation">
+    This function takes an array of items and calculates the total price.
+  </div>
+</div>
+```
+
+### Highlighting Key Sections
+Use highlighting to emphasize important parts:
+
+```html
+<pre><code class="javascript" data-line-numbers="3-5">
+function processData(data) {
+  // Initialize result
+  const result = data
+    .filter(item => item.active)
+    .map(item => item.value);
+  return result;
+}
+</code></pre>
+```
+
+### Annotations
+Add annotations to complex code:
+
+```html
+<div class="annotated-code">
+  <pre><code class="javascript">
+function authenticate(user, token) {
+  if (!isValidToken(token)) {
+    throw new AuthError("Invalid token");
+  }
+  return getUserPermissions(user);
+}
+  </code></pre>
+  
+  <div class="annotations">
+    <div class="annotation" data-line="2">Validates the security token</div>
+    <div class="annotation" data-line="3">Throws custom error if token invalid</div>
+    <div class="annotation" data-line="5">Returns user's permission object</div>
+  </div>
+</div>
+```
+
+## Live Coding
+
+### Setup Instructions
+- Configure editor to use larger font (minimum 18pt)
+- Use high-contrast theme (dark background preferred)
+- Enable line numbers
+- Limit visible editor UI elements
+
+### Code Walkthrough
+For live coding demonstrations:
+- Start with comments outlining the purpose and steps
+- Build code incrementally
+- Verbalize each step as you code
+- Run/test code at logical stopping points
+
+Example walkthrough structure:
+```javascript
+// 1. Set up data structures
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" }
+];
+
+// 2. Create filter function
+function findUserById(id) {
+  return users.find(user => user.id === id);
+}
+
+// 3. Demonstrate usage
+console.log(findUserById(1)); // { id: 1, name: "Alice" }
+```
+
+## Interactive Code Examples
+
+### Editable Code Blocks
+For interactive examples:
+
+```html
+<div class="interactive-code">
+  <pre><code class="javascript" contenteditable="true">
+// Try modifying this code
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+// See the result below
+console.log(greet("World"));
+  </code></pre>
+  
+  <div class="code-output">
+    <button class="run-button">Run Code</button>
+    <div class="result"></div>
+  </div>
+</div>
+```
+
+### Before/After Examples
+Display transformations with before/after blocks:
+
+```html
+<div class="code-comparison">
+  <div class="before">
+    <h4>Before</h4>
+    <pre><code class="javascript">
+// Imperative approach
+const numbers = [1, 2, 3, 4, 5];
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+  sum += numbers[i];
+}
+console.log(sum); // 15
+    </code></pre>
+  </div>
+  
+  <div class="after">
+    <h4>After</h4>
+    <pre><code class="javascript">
+// Declarative approach
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // 15
+    </code></pre>
+  </div>
+</div>
+```
+
+## Error Handling
+
+### Show Common Errors
+Demonstrate error handling and common mistakes:
+
+```html
+<div class="error-example">
+  <h4>Common Error: Type Mismatch</h4>
+  
+  <pre><code class="javascript">
+// Incorrect
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add("5", 10)); // "510" (string concatenation)
+  </code></pre>
+  
+  <div class="correction">
+    <h4>Correction</h4>
+    <pre><code class="javascript">
+// Correct - explicit conversion
+function add(a, b) {
+  return Number(a) + Number(b);
+}
+
+console.log(add("5", 10)); // 15 (numeric addition)
+    </code></pre>
+  </div>
+</div>
+```
+
+By following these code example standards, the presentation will maintain professional, readable, and educational code demonstrations.

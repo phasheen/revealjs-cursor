@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# RevealJS Presentation Style Guidelines
+
+This rule ensures consistent styling and formatting across all slides in the RevealJS presentation.
+
+## Structure Guidelines
+- Follow the existing section/slide structure in [index.html](mdc:index.html)
+- Maintain consistent heading levels (h1 for main titles, h2 for subtitles)
+- Each main topic should have its own section with the `data-transition` attribute
+- Use the `<!-- .element: class="fragment" -->` syntax for animated elements
+
+## Styling Patterns
+- Use `.bg-header` class for headers as shown in [custom/custom-styles.css](mdc:custom/custom-styles.css)
+- Highlight important terms with `<span class="highlight">term</span>`
+- For layouts, use the `.container` and `.col` classes
+- Code snippets should use `<pre><code>` tags with appropriate language class
+- Images should include `width` and `height` attributes
+
+## Content Guidelines
+- Keep bullet points concise and focused
+- Use the SNU logo in the bottom-right corner for branding
+- Reference [custom/custom-styles.css](mdc:custom/custom-styles.css) for consistent styling
+- For interactive elements, utilize the functions in [custom/custom-scripts.js](mdc:custom/custom-scripts.js)
+
+When adding new slides, maintain visual consistency with existing slides to create a cohesive presentation.

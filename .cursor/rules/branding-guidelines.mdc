@@ -1,0 +1,66 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Presentation Branding Guidelines
+
+This rule defines the standard branding elements to maintain a consistent visual identity throughout the presentation.
+
+## Color Palette
+- Primary: `#3980FB` (Main brand blue)
+- Secondary: `#30D158` (Success/highlight green)
+- Accent: `#FF9D0A` (Warning/attention orange)
+- Background: `#1C1C1E` (Dark mode background)
+- Text: `#FFFFFF` (Light text for dark backgrounds)
+
+## Typography
+- Headings: 'Source Sans Pro', sans-serif
+- Body text: 'Open Sans', sans-serif
+- Code: 'Fira Code', monospace
+- Keep font sizes consistent:
+  - h1: 3.5em
+  - h2: 2.5em
+  - h3: 1.8em
+  - Body text: 1.5em
+  - Code: 1.2em
+
+## Logo Usage
+- Place the Cursor logo in the bottom right corner of title slides
+- Keep logo size consistent (recommend 150px width)
+- Maintain clear space around the logo (at least 20px on all sides)
+- Example logo placement:
+```html
+<section>
+  <h1>Slide Title</h1>
+  <img class="logo" src="assets/cursor-logo.png" alt="Cursor Logo" style="position: absolute; bottom: 20px; right: 20px; width: 150px;">
+</section>
+```
+
+## Image Style
+- Use consistent image style throughout:
+  - Screenshots should have rounded corners (8px radius)
+  - Apply subtle drop shadow to images: `box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)`
+  - Maintain aspect ratios, don't stretch or distort
+- Example CSS:
+```css
+.reveal img:not(.logo) {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+```
+
+## Code Highlighting
+- Use the "Atom One Dark" theme for code blocks
+- Highlight important code sections with a yellow background:
+```html
+<pre><code data-line-numbers="3-5">...</code></pre>
+```
+- Keep syntax highlighting consistent (JavaScript, HTML, CSS, etc.)
+
+## Slide Backgrounds
+- Main title slides: Gradient background `linear-gradient(135deg, #3980FB 0%, #1E3C72 100%)`
+- Regular content slides: Solid dark background `#1C1C1E`
+- Special section dividers: Full-bleed relevant images with 40% dark overlay
+
+Apply these branding guidelines consistently to maintain a professional and cohesive presentation style.
