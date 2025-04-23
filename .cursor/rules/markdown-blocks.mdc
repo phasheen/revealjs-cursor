@@ -3,3 +3,185 @@ description:
 globs:
 alwaysApply: false
 ---
+# Markdown Block Formatting
+
+This rule establishes standards for Markdown content blocks in the presentation to ensure consistency and readability.
+
+## Basic Block Types
+
+### Headers
+Use consistent header levels with proper hierarchy:
+```markdown
+# Main Title (H1) - Use only once per slide
+## Section Title (H2)
+### Subsection (H3)
+#### Detail Point (H4)
+```
+
+### Lists
+Use consistent list formatting:
+```markdown
+* Unordered list item
+* Another item
+  * Nested item with proper indentation (2 spaces)
+  * Another nested item
+    * Further nesting
+
+1. Ordered list item
+2. Second item
+   1. Nested ordered item
+   2. Another nested item
+```
+
+### Blockquotes
+Format quotes consistently:
+```markdown
+> This is a quote from an important source
+> 
+> Multiple paragraphs in a blockquote require the > symbol on blank lines
+>
+> <cite>— Attribution</cite>
+```
+
+### Code Blocks
+For inline code:
+```markdown
+Use `backticks` for inline code elements
+```
+
+For code blocks:
+```markdown
+```javascript
+// Code block with language specification
+function example() {
+  return "Hello world";
+}
+```
+```
+
+## Advanced Formatting
+
+### Tables
+Format tables consistently:
+```markdown
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+```
+
+### Definition Lists
+Use this format for definition lists:
+```markdown
+<dl>
+  <dt>Term</dt>
+  <dd>Definition of the term</dd>
+  
+  <dt>Another Term</dt>
+  <dd>Definition of another term</dd>
+</dl>
+```
+
+### Footnotes
+Use consistent footnote formatting:
+```markdown
+This statement requires citation[^1].
+
+[^1]: This is the footnote content.
+```
+
+## RevealJS-Specific Markdown
+
+### Slide Separators
+Use consistent slide separators:
+```markdown
+# Slide 1
+
+Content for slide 1
+
+---
+
+# Slide 2
+
+Content for slide 2
+
+---
+
+# Slide 3
+
+Content for slide 3
+```
+
+### Fragments
+Format fragment reveals consistently:
+```markdown
+* Regular item
+* Item revealed second <!-- .element: class="fragment" -->
+* Item revealed third <!-- .element: class="fragment" -->
+* Item revealed fourth <!-- .element: class="fragment highlight-blue" -->
+```
+
+### Speaker Notes
+Format speaker notes consistently:
+```markdown
+# Slide Title
+
+Content visible to audience
+
+Note:
+Speaker notes go here.
+Multiple lines are supported.
+These are only visible in presenter view.
+```
+
+### Columns
+Format multi-column content consistently:
+```markdown
+<div class="two-columns">
+  <div class="column">
+    
+## First Column
+* Point 1
+* Point 2
+    
+  </div>
+  <div class="column">
+    
+## Second Column
+* Point A
+* Point B
+    
+  </div>
+</div>
+```
+
+## Custom Elements
+
+### Info Boxes
+Format information boxes consistently:
+```markdown
+<div class="info-box">
+  <h3>Important Information</h3>
+  <p>Critical details that need highlighting.</p>
+</div>
+```
+
+### Warning Boxes
+Format warning boxes consistently:
+```markdown
+<div class="warning-box">
+  <h3>Warning</h3>
+  <p>Critical warning or caution notice.</p>
+</div>
+```
+
+### Tip Boxes
+Format tip boxes consistently:
+```markdown
+<div class="tip-box">
+  <h3>Pro Tip</h3>
+  <p>Helpful advice or shortcut information.</p>
+</div>
+```
+
+By following these formatting standards, Markdown content will remain consistent and professional throughout the presentation.
